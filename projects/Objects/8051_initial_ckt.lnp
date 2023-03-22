@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\TestFile_initial_CKT.obj" 
+TO ".\Objects\8051_initial_ckt" 
+PRINT(".\Listings\8051_initial_ckt.m51")

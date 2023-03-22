@@ -1,0 +1,187 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/30/2022  09:46:35  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+G:\KEIL\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\MoistureSensorCode.obj TO .\Objects\moisture_sensor PRINT (.\L
+>> istings\moisture_sensor.m51)
+
+
+MEMORY MODEL: SMALL WITH FLOATING POINT ARITHMETIC
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\MoistureSensorCode.obj (MOISTURESENSORCODE)
+  G:\KEIL\C51\LIB\C51FPS.LIB (?C?FPADD)
+  G:\KEIL\C51\LIB\C51FPS.LIB (?C?FPMUL)
+  G:\KEIL\C51\LIB\C51FPS.LIB (?C?FPDIV)
+  G:\KEIL\C51\LIB\C51FPS.LIB (?C?CASTF)
+  G:\KEIL\C51\LIB\C51FPS.LIB (LOG)
+  G:\KEIL\C51\LIB\C51FPS.LIB (?C?FPGETOPN)
+  G:\KEIL\C51\LIB\C51FPS.LIB (?C?FCAST)
+  G:\KEIL\C51\LIB\C51FPS.LIB (?C?FPSERIES)
+  G:\KEIL\C51\LIB\C51S.LIB (?C?LNEG)
+  G:\KEIL\C51\LIB\C51S.LIB (?C?LLDCODE)
+  G:\KEIL\C51\LIB\C51S.LIB (?C?LLDCODE0)
+
+
+LINK MAP OF MODULE:  .\Objects\moisture_sensor (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+                    0008H     0018H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         _BIT_GROUP_
+                    0020H.1   0000H.7                *** GAP ***
+            DATA    0021H     001EH     UNIT         _DATA_GROUP_
+            IDATA   003FH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     03D8H     UNIT         ?C?LIB_CODE
+            CODE    0BD8H     0135H     UNIT         ?PR?LOG?LOG
+            CODE    0D0DH     00FCH     UNIT         ?PR?MAIN?MOISTURESENSORCODE
+            CODE    0E09H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\moisture_sensor (?C_STARTUP)
+
+
+SEGMENT                                BIT_GROUP          DATA_GROUP 
+  +--> CALLED SEGMENT               START    LENGTH     START    LENGTH
+-----------------------------------------------------------------------
+?C_C51STARTUP                       -----    -----      -----    -----
+  +--> ?PR?MAIN?MOISTURESENSORCODE
+
+?PR?MAIN?MOISTURESENSORCODE         -----    -----      0021H    001AH
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/30/2022  09:46:35  PAGE 2
+
+
+  +--> ?PR?LOG?LOG
+
+?PR?LOG?LOG                         0020H.0  0000H.1    003BH    0004H
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\moisture_sensor (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0E09H         SEGMENT       ?C_C51STARTUP
+  I:003FH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0E0CH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0E09H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0E09H         LINE#         133
+  C:0E0BH         LINE#         134
+  C:0E0CH         LINE#         135
+  C:0E0DH         LINE#         136
+  C:0E0FH         LINE#         185
+  C:0E12H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MOISTURESENSORCODE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0D0DH         PUBLIC        main
+  -------         PROC          MAIN
+  -------         DO            
+  D:0021H         SYMBOL        B
+  D:0025H         SYMBOL        t
+  D:0004H         SYMBOL        ans
+  D:0029H         SYMBOL        vcc
+  D:002DH         SYMBOL        r
+  D:0031H         SYMBOL        r0
+  D:0035H         SYMBOL        vt
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/30/2022  09:46:35  PAGE 3
+
+
+  D:0039H         SYMBOL        temp
+  D:0004H         SYMBOL        rt
+  -------         ENDDO         
+  C:0D0DH         LINE#         2
+  C:0D0DH         LINE#         3
+  C:0D44H         LINE#         6
+  C:0D50H         LINE#         7
+  C:0D89H         LINE#         8
+  C:0DE1H         LINE#         9
+  C:0E05H         LINE#         10
+  C:0E08H         LINE#         11
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MOISTURESENSORCODE
+
+  -------         MODULE        ?C?FPADD
+  C:0807H         PUBLIC        ?C?FPADD
+  C:0803H         PUBLIC        ?C?FPSUB
+  -------         ENDMOD        ?C?FPADD
+
+  -------         MODULE        ?C?FPMUL
+  C:08F8H         PUBLIC        ?C?FPMUL
+  -------         ENDMOD        ?C?FPMUL
+
+  -------         MODULE        ?C?FPDIV
+  C:0A01H         PUBLIC        ?C?FPDIV
+  -------         ENDMOD        ?C?FPDIV
+
+  -------         MODULE        ?C?CASTF
+  C:0A9EH         PUBLIC        ?C?CASTF
+  -------         ENDMOD        ?C?CASTF
+
+  -------         MODULE        LOG
+  C:0C0CH         PUBLIC        _LOG
+  C:0C08H         PUBLIC        _LOG10
+  -------         ENDMOD        LOG
+
+  -------         MODULE        ?C?FCAST
+  C:0B29H         PUBLIC        ?C?FCASTC
+  C:0B24H         PUBLIC        ?C?FCASTI
+  C:0B1FH         PUBLIC        ?C?FCASTL
+  -------         ENDMOD        ?C?FCAST
+
+  -------         MODULE        ?C?LNEG
+  C:0BAAH         PUBLIC        ?C?LNEG
+  -------         ENDMOD        ?C?LNEG
+
+  -------         MODULE        ?C?LLDCODE
+  C:0BB8H         PUBLIC        ?C?LLDCODE
+  -------         ENDMOD        ?C?LLDCODE
+
+  -------         MODULE        ?C?LLDCODE0
+  C:0BC8H         PUBLIC        ?C?LLDCODE0
+  -------         ENDMOD        ?C?LLDCODE0
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 010BH BYTE (13%) *
+******************************************************************************
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/30/2022  09:46:35  PAGE 4
+
+
+
+Program Size: data=39.1 xdata=0 code=1560
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

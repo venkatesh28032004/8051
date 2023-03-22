@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\moist.obj" 
+TO ".\Objects\moist" 
+PRINT(".\Listings\moist.m51")

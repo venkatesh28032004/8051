@@ -1,0 +1,130 @@
+A51 MACRO ASSEMBLER  PRACTICE                                                             09/21/2022 08:39:36 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\practice.obj
+ASSEMBLER INVOKED BY: G:\keil\C51\BIN\A51.EXE practice.a51 SET(SMALL) DEBUG PRINT(.\Listings\practice.lst) OBJECT(.\Obje
+                      cts\practice.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     org 00h
+                       2             ;org 00h
+                       3     
+0000 900400            4     mov DPTR,#400h
+                       5     
+0003 7438              6     mov A,#38h
+0005 1124              7     acall CMD
+0007 740F              8     mov A,#0fh
+0009 1124              9     acall CMD
+000B 7401             10     mov A,#01h
+000D 1124             11     acall CMD
+000F 7406             12     mov A,#06h
+0011 1124             13     acall CMD
+0013 7480             14     mov A,#80h
+0015 1124             15     acall CMD
+                      16     
+0017 7F08             17     mov r7,#08h
+0019 7800             18     mov r0,#00h
+                      19     
+001B                  20     again:
+001B E8               21     mov A,r0
+001C 93               22     movc A,@a+DPTR
+001D 1131             23     acall data_print
+001F 08               24     inc r0
+0020 DFF9             25     djnz r7,again
+                      26     
+0022 80FE             27     wait_here:jmp wait_here
+                      28     
+                      29     
+                      30     ; p1.0->r/w   p1.1->rs   p1.2->en
+0024                  31     CMD:
+0024 F5B0             32             mov P3,A
+0026 C290             33             clr P1.0
+0028 C291             34             clr P1.1
+002A D292             35             setb P1.2
+002C C292             36             clr P1.2
+002E 113E             37             acall delay
+0030 22               38             ret
+                      39     
+0031                  40     data_print:
+0031 F5B0             41             mov P3,A
+0033 C290             42             clr P1.0
+0035 D291             43             setb P1.1
+0037 D292             44             setb P1.2
+0039 C292             45             clr P1.2
+003B 113E             46             acall delay
+003D 22               47             ret
+003E                  48     delay:
+003E 7B10             49             mov r3,#10h
+0040 DBFE             50             here:djnz r3,here
+0042 22               51             ret
+                      52     
+0043                  53     string:
+0400                  54             org 400h
+0400 204B4C48         55             db ' KLH ECE'
+0404 20454345                
+                      56     
+A51 MACRO ASSEMBLER  PRACTICE                                                             09/21/2022 08:39:36 PAGE     2
+
+                      57     
+                      58     end
+                             
+                                             ; bit/ byte manipulation for led blinking
+                                     
+                             ;       back:mov P1 , #0ffh
+                             ;               acall delay
+                             ;               acall delay
+                             ;               mov P1,#00h
+                             ;               acall delay
+                             ;               acall delay
+                             ;               sjmp back
+                             ;               delay:
+                             ;               mov r4,#0ffh
+                             ;               here:djnz r4,here
+                             ;               ret
+                             
+                             
+                                     ; generating a square wave of 2khz
+                             ;       start:
+                             ;       mov TMOD , #01h
+                             ;       mov TH0 , #0ffh
+                             ;       mov TL0 , #06h
+                             ;       cpl P1.2
+                             ;       setb TR0
+                             ;       
+                             ;       wait:jnb TF0 , wait
+                             ;       
+                             ;       clr TR0
+                             ;       clr TF0
+                             ;       sjmp start
+                             
+                                     ; displaying on lcd
+                                     
+                                     
+                             
+                             
+                             ;end
+A51 MACRO ASSEMBLER  PRACTICE                                                             09/21/2022 08:39:36 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   001BH   A   
+CMD. . . . . . . .  C ADDR   0024H   A   
+DATA_PRINT . . . .  C ADDR   0031H   A   
+DELAY. . . . . . .  C ADDR   003EH   A   
+HERE . . . . . . .  C ADDR   0040H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+STRING . . . . . .  C ADDR   0043H   A   
+WAIT_HERE. . . . .  C ADDR   0022H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

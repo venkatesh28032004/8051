@@ -1,0 +1,75 @@
+C51 COMPILER V9.60.0.0   DOOROPENINGCODE                                                   09/05/2022 11:55:26 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DOOROPENINGCODE
+OBJECT MODULE PLACED IN .\Objects\DoorOpeningCode.obj
+COMPILER INVOKED BY: G:\keil\C51\BIN\C51.EXE DoorOpeningCode.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listi
+                    -ngs\DoorOpeningCode.lst) TABS(2) OBJECT(.\Objects\DoorOpeningCode.obj)
+
+line level    source
+
+   1          #include < reg51.h >
+   2          void delay(unsigned int time);
+   3          void lcd_init(void);
+   4          void lcd_cmd(unsigned char a);
+   5          void lcd_data(unsigned char b);
+   6          void lcd_print(unsigned char *str);
+   7          
+   8          
+   9          sbit rs=P2^0;
+  10          sbit en=P2^1;
+  11          sbit ir=P2^2;
+  12          
+  13          sfr ldata = 0xb0;
+  14          
+  15          void main( void ){
+  16   1        lcd_init();
+  17   1        lcd_print(" AUTOMATED DOOR ");
+  18   1        lcd_cmd(0xc0);
+  19   1        lcd_print(" OPENING SYSTEM ");
+  20   1        delay(65000);
+  21   1      }
+  22          void delay(unsigned int time){
+  23   1        unsigned int j;
+  24   1        for(j=0;j<time;j++);
+  25   1      }
+  26          void lcd_init(void ){
+  27   1        lcd_cmd(0x38);
+  28   1        lcd_cmd(0x0c);
+  29   1        lcd_cmd(0x01);
+  30   1        lcd_cmd(0x80);
+  31   1      }
+  32          void lcd_cmd(unsigned char a){
+  33   1        rs=0;
+  34   1        ldata=a;
+  35   1        en=1;
+  36   1        delay(200);
+  37   1        en=0;
+  38   1      }
+  39          void lcd_data(unsigned char b){
+  40   1        rs=1;
+  41   1        ldata=b;
+  42   1        en=1;
+  43   1        delay(100);
+  44   1        en=0;
+  45   1      }
+  46          void lcd_print(unsigned char *str){
+  47   1        while(*str)
+  48   1          lcd_data(*str++);
+  49   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    140    ----
+   CONSTANT SIZE    =     34    ----
+C51 COMPILER V9.60.0.0   DOOROPENINGCODE                                                   09/05/2022 11:55:26 PAGE 2   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\FAN_CODE.obj" 
+TO ".\Objects\8051_fan" 
+PRINT(".\Listings\8051_fan.m51")

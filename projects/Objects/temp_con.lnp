@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\temp_fan.obj" 
+TO ".\Objects\temp_con" 
+PRINT(".\Listings\temp_con.m51")

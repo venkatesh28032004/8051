@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\Port_Pin_Toggle.obj" 
+TO ".\Objects\port_toggle" 
+PRINT(".\Listings\port_toggle.m51")

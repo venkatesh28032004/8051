@@ -1,0 +1,3 @@
+".\Objects\practice.obj" 
+TO ".\Objects\practiceLCD" 
+PRINT(".\Listings\practiceLCD.m51")

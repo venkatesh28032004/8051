@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\RFID_code.obj" 
+TO ".\Objects\RFID" 
+PRINT(".\Listings\RFID.m51")

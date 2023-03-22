@@ -1,0 +1,56 @@
+C51 COMPILER V9.60.0.0   AUTOMATEDLIGHTS                                                   09/06/2022 08:59:15 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE AUTOMATEDLIGHTS
+OBJECT MODULE PLACED IN .\Objects\AutomatedLights.obj
+COMPILER INVOKED BY: G:\keil\C51\BIN\C51.EXE AutomatedLights.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listi
+                    -ngs\AutomatedLights.lst) TABS(2) OBJECT(.\Objects\AutomatedLights.obj)
+
+line level    source
+
+   1          #include < reg51.h >
+   2          sbit ir1=P2^0;
+   3          sbit ir2=P2^1;
+   4          sbit light1=P3^0;
+   5          sbit light2=P3^1;
+   6          unsigned int n;
+   7          unsigned int i;
+   8          void main(void){
+   9   1        n=1;
+  10   1        if(n==1){
+  11   2          light1=0;
+  12   2        light2=0;
+  13   2        }
+  14   1        
+  15   1        
+  16   1        light1=1;
+  17   1        light2=0;
+  18   1        for(i=0;i<65000;i++);
+  19   1        light1=0;
+  20   1        light2=1;
+  21   1        for(i=0;i<65000;i++);
+  22   1        
+  23   1      //  if(ir1==1 && ir2==0){
+  24   1      //    light1=1;
+  25   1      //    light2=0;
+  26   1      //  }
+  27   1      //  if(ir1==0 && ir2==1){
+  28   1      //    light2=1;
+  29   1      //    light1=0;
+  30   1      //  }
+  31   1      //  n++;
+  32   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     95    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      4    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

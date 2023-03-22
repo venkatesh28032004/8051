@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\LCD_Code.obj" 
+TO ".\Objects\8051_LCD" 
+PRINT(".\Listings\8051_LCD.m51")

@@ -1,0 +1,233 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    09/04/2022  09:22:26  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+G:\KEIL\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\FAN_code_8051.obj TO .\Objects\FAN_CODE PRINT (.\Listings\FAN_
+>> CODE.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\FAN_code_8051.obj (FAN_CODE_8051)
+  G:\KEIL\C51\LIB\C51S.LIB (?C?CLDPTR)
+
+
+LINK MAP OF MODULE:  .\Objects\FAN_CODE (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         _DATA_GROUP_
+            IDATA   000BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0031H     UNIT         ?PR?_HEX2ASCII?FAN_CODE_8051
+            CODE    0831H     002FH     UNIT         ?PR?MAIN?FAN_CODE_8051
+            CODE    0860H     0025H     UNIT         ?PR?_LCD_PRINT?FAN_CODE_8051
+            CODE    0885H     001AH     UNIT         ?PR?_DELAY?FAN_CODE_8051
+            CODE    089FH     0019H     UNIT         ?C?LIB_CODE
+            CODE    08B8H     0014H     UNIT         ?PR?LCD_INIT?FAN_CODE_8051
+            CODE    08CCH     0011H     UNIT         ?CO?FAN_CODE_8051
+            CODE    08DDH     000CH     UNIT         ?C_C51STARTUP
+            CODE    08E9H     0008H     UNIT         ?PR?_LCD_CMD?FAN_CODE_8051
+            CODE    08F1H     0008H     UNIT         ?PR?_LCD_DATA?FAN_CODE_8051
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\FAN_CODE (?C_STARTUP)
+
+
+SEGMENT                                DATA_GROUP 
+  +--> CALLED SEGMENT                START    LENGTH
+----------------------------------------------------
+?C_C51STARTUP                        -----    -----
+  +--> ?PR?MAIN?FAN_CODE_8051
+
+?PR?MAIN?FAN_CODE_8051               -----    -----
+  +--> ?PR?LCD_INIT?FAN_CODE_8051
+  +--> ?CO?FAN_CODE_8051
+  +--> ?PR?_LCD_PRINT?FAN_CODE_8051
+  +--> ?PR?_DELAY?FAN_CODE_8051
+  +--> ?PR?_LCD_CMD?FAN_CODE_8051
+  +--> ?PR?_HEX2ASCII?FAN_CODE_8051
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/04/2022  09:22:26  PAGE 2
+
+
+?PR?LCD_INIT?FAN_CODE_8051           -----    -----
+  +--> ?PR?_LCD_CMD?FAN_CODE_8051
+
+?PR?_LCD_CMD?FAN_CODE_8051           -----    -----
+  +--> ?PR?_DELAY?FAN_CODE_8051
+
+?PR?_LCD_PRINT?FAN_CODE_8051         0008H    0003H
+  +--> ?PR?_LCD_DATA?FAN_CODE_8051
+
+?PR?_LCD_DATA?FAN_CODE_8051          -----    -----
+  +--> ?PR?_DELAY?FAN_CODE_8051
+
+?PR?_HEX2ASCII?FAN_CODE_8051         0008H    0002H
+  +--> ?PR?_LCD_DATA?FAN_CODE_8051
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\FAN_CODE (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:08DDH         SEGMENT       ?C_C51STARTUP
+  I:000BH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:08E0H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:08DDH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:08DDH         LINE#         133
+  C:08DFH         LINE#         134
+  C:08E0H         LINE#         135
+  C:08E1H         LINE#         136
+  C:08E3H         LINE#         185
+  C:08E6H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        FAN_CODE_8051
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/04/2022  09:22:26  PAGE 3
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0800H         PUBLIC        _hex2ascii
+  D:00B0H         PUBLIC        ldata
+  C:088DH         PUBLIC        _delay
+  C:0831H         PUBLIC        main
+  D:0090H         PUBLIC        adc
+  C:08F1H         PUBLIC        _lcd_data
+  B:00A0H.4       PUBLIC        intr
+  C:0860H         PUBLIC        _lcd_print
+  C:08E9H         PUBLIC        _lcd_cmd
+  C:08B8H         PUBLIC        lcd_init
+  B:00A0H.1       PUBLIC        en
+  B:00A0H.2       PUBLIC        rd
+  B:00A0H.0       PUBLIC        rs
+  B:00A0H.3       PUBLIC        wr
+  -------         PROC          MAIN
+  C:0831H         LINE#         22
+  C:0831H         LINE#         23
+  C:0834H         LINE#         25
+  C:083DH         LINE#         27
+  C:083DH         LINE#         28
+  C:083FH         LINE#         29
+  C:0841H         LINE#         30
+  C:0848H         LINE#         31
+  C:084AH         LINE#         32
+  C:084DH         LINE#         34
+  C:084FH         LINE#         35
+  C:0854H         LINE#         36
+  C:085CH         LINE#         37
+  C:085EH         LINE#         39
+  -------         ENDPROC       MAIN
+  -------         PROC          _HEX2ASCII
+  D:0007H         SYMBOL        value
+  -------         DO            
+  D:0006H         SYMBOL        x
+  D:0007H         SYMBOL        d1
+  D:0008H         SYMBOL        d2
+  D:0009H         SYMBOL        d3
+  -------         ENDDO         
+  C:0800H         LINE#         44
+  C:0800H         LINE#         46
+  C:0806H         LINE#         47
+  C:080EH         LINE#         48
+  C:0816H         LINE#         49
+  C:081BH         LINE#         50
+  C:0821H         LINE#         51
+  C:0829H         LINE#         52
+  -------         ENDPROC       _HEX2ASCII
+  -------         PROC          L?0019
+  -------         ENDPROC       L?0019
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        time
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:088DH         LINE#         55
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  09/04/2022  09:22:26  PAGE 4
+
+
+  C:088DH         LINE#         57
+  C:089EH         LINE#         58
+  -------         ENDPROC       _DELAY
+  -------         PROC          LCD_INIT
+  C:08B8H         LINE#         59
+  C:08B8H         LINE#         60
+  C:08BDH         LINE#         61
+  C:08C2H         LINE#         62
+  C:08C7H         LINE#         63
+  -------         ENDPROC       LCD_INIT
+  -------         PROC          _LCD_CMD
+  D:0007H         SYMBOL        a
+  C:08E9H         LINE#         65
+  C:08E9H         LINE#         66
+  C:08EBH         LINE#         67
+  C:08EBH         LINE#         68
+  C:08EBH         LINE#         69
+  C:08EEH         LINE#         70
+  C:08F0H         LINE#         71
+  -------         ENDPROC       _LCD_CMD
+  -------         PROC          _LCD_DATA
+  D:0007H         SYMBOL        b
+  C:08F1H         LINE#         72
+  C:08F1H         LINE#         73
+  C:08F3H         LINE#         74
+  C:08F3H         LINE#         75
+  C:08F3H         LINE#         76
+  C:08F6H         LINE#         77
+  C:08F8H         LINE#         78
+  -------         ENDPROC       _LCD_DATA
+  -------         PROC          _LCD_PRINT
+  D:0008H         SYMBOL        str
+  C:0860H         LINE#         79
+  C:0866H         LINE#         80
+  C:0871H         LINE#         81
+  C:0884H         LINE#         82
+  -------         ENDPROC       _LCD_PRINT
+  -------         ENDMOD        FAN_CODE_8051
+
+  -------         MODULE        ?C?CLDPTR
+  C:089FH         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 00E3H BYTE (11%) *
+******************************************************************************
+
+Program Size: data=12.0 xdata=0 code=252
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

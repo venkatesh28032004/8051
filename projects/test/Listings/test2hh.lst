@@ -1,0 +1,35 @@
+C51 COMPILER V9.60.0.0   TEST2HH                                                           09/05/2022 12:46:10 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TEST2HH
+OBJECT MODULE PLACED IN .\Objects\test2hh.obj
+COMPILER INVOKED BY: G:\keil\C51\BIN\C51.EXE test2hh.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\test
+                    -2hh.lst) TABS(2) OBJECT(.\Objects\test2hh.obj)
+
+line level    source
+
+   1          #include < reg51.h >
+   2          sbit rs=P2^6;
+   3          sbit en=P2^7;
+   4          sfr ldata=P3;
+*** ERROR C141 IN LINE 4 OF test2hh.c: syntax error near 'P3', expected 'const'
+   5          void main(void )
+   6            {
+   7   1          lcd_init();
+   8   1          
+   9   1        }
+  10          void lcd_init(void)
+  11          {
+  12   1        lcd_cmd(0x38);
+  13   1        lcd_cmd(0x0c);
+  14   1        lcd_cmd(0x01);
+  15   1        lcd_cmd(0x80);
+  16   1      }
+  17          void lcd_cmd(unsigned char a)
+  18          {
+  19   1        rs=0;
+  20   1        ldata=a;
+  21   1        
+  22   1        
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  1 ERROR(S)

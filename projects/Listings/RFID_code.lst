@@ -1,0 +1,104 @@
+C51 COMPILER V9.60.0.0   RFID_CODE                                                         09/29/2022 13:44:49 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE RFID_CODE
+OBJECT MODULE PLACED IN .\Objects\RFID_code.obj
+COMPILER INVOKED BY: G:\keil\C51\BIN\C51.EXE RFID_code.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\RF
+                    -ID_code.lst) TABS(2) OBJECT(.\Objects\RFID_code.obj)
+
+line level    source
+
+   1          # include <reg51.h >
+   2          void lcd_data(unsigned char b); //
+   3          void lcd_cmd(unsigned int a); //
+   4          void delay(unsigned int value); //
+   5          void init(void);  //
+   6          void print(unsigned char *str); //
+   7          
+   8          void hexTOascii(unsigned char v);
+   9          
+  10          
+  11          // LCD control pins
+  12          sbit rs = P2^0; // 0 - cmd , 1 - dataa
+  13          sbit en = P2^1; // high - low
+  14          // ADC control pins
+  15          sbit read = P2^2;
+  16          sbit write = P2^3;
+  17          sbit intr = P2^4;
+  18          
+  19          sfr adc = 0x90;
+  20          sfr lcd = 0xb0;
+  21          
+  22          int main(void){
+  23   1        init();
+  24   1        print(" hello world");
+  25   1        delay(10000);
+  26   1        init();
+  27   1        while(1){
+  28   2          read = 1 ;
+  29   2          write = 0;  // start conversion
+  30   2          delay(50);
+  31   2          write = 1;
+  32   2          while(intr==1);
+  33   2          read = 0;
+  34   2          lcd_cmd(0x80);
+  35   2          hexTOascii(adc);
+  36   2          intr = 1;
+  37   2        } 
+  38   1      }
+  39          void delay(unsigned int value){
+  40   1        unsigned int i;
+  41   1        for(i=0;i<value;i++);
+  42   1      }
+  43          void lcd_cmd(unsigned char a){
+*** WARNING C235 IN LINE 43 OF RFID_code.c: parameter 1: different types
+  44   1        rs = 0;
+  45   1        lcd = a ;
+  46   1        en = 0;
+  47   1        delay(5);
+  48   1        en = 1;
+  49   1      }
+  50          void lcd_data(unsigned char b){
+  51   1        rs = 1;
+  52   1        lcd = b ;
+  53   1        en = 0;
+C51 COMPILER V9.60.0.0   RFID_CODE                                                         09/29/2022 13:44:49 PAGE 2   
+
+  54   1        delay(5);
+  55   1        en = 1;
+  56   1      }
+  57          void init(void){
+  58   1        lcd_cmd(0x38);
+  59   1        lcd_cmd(0x0c);
+  60   1        lcd_cmd(0x01);
+  61   1        lcd_cmd(0x80);
+  62   1      }
+  63          void print(unsigned char *str){
+  64   1        while(*str){
+  65   2          lcd_data(*str++);
+  66   2        }
+  67   1      }
+  68          void hexTOascii(unsigned char v){ // ff - 255
+  69   1        unsigned int x3,x2,x1,x;
+  70   1        x=v/10; // x=25
+  71   1        x3 = v %10; // x3 = 5
+  72   1        x2 = x %10; // x2 = 5
+  73   1        x1 = x / 10;  // x1 = 2
+  74   1        lcd_data(x1+0x30);
+  75   1        lcd_data(x2+0x30);
+  76   1        lcd_data(x3+0x30);  
+  77   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    222    ----
+   CONSTANT SIZE    =     13    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       5
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

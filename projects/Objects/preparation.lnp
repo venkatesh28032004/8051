@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\preparation_codes.obj" 
+TO ".\Objects\preparation" 
+PRINT(".\Listings\preparation.m51")

@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\AutomatedLights.obj" 
+TO ".\Objects\lighting" 
+PRINT(".\Listings\lighting.m51")

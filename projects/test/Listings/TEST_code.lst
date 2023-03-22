@@ -1,0 +1,136 @@
+C51 COMPILER V9.60.0.0   TEST_CODE                                                         09/04/2022 18:11:04 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TEST_CODE
+OBJECT MODULE PLACED IN .\Objects\TEST_code.obj
+COMPILER INVOKED BY: G:\keil\C51\BIN\C51.EXE TEST_code.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\TE
+                    -ST_code.lst) TABS(2) OBJECT(.\Objects\TEST_code.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          void lcd_init ( void );
+   3          void lcd_cmd ( unsigned char a );
+   4          void lcd_data ( unsigned char b );
+   5          void lcd_print ( unsigned char *str );
+   6          void delay ( unsigned int value);
+   7          void checkMODE(void);
+   8          void checkPUMP( void );
+   9          void printWaterlevel(void);
+  10          
+  11          
+  12          sbit rs = P2^0 ;
+  13          sbit en = P2^1 ;
+  14          sfr ldata = 0xb0;
+  15          
+  16          sbit l25 = P1^0 ;
+  17          sbit l50 = P1^1 ;
+  18          sbit l75 = P1^2 ;
+  19          sbit l100 = P1^3 ;
+  20          
+  21          unsigned int mode = 1;
+  22          unsigned int pump = 0;
+  23          unsigned int level =0;
+  24          
+  25          void main ( void ) {
+  26   1        lcd_init();
+  27   1        lcd_print(" WATER LEVEL: ");
+  28   1        printWaterlevel();
+  29   1        lcd_cmd(0xc0);
+  30   1        lcd_print("PUMP:      ");
+  31   1        checkPUMP();
+  32   1        lcd_cmd(0xca);
+  33   1        checkMODE();
+  34   1        delay(65000);
+  35   1      }
+  36          void printWaterlevel(void){
+  37   1        if(l100==0 && l75==0 && l50==0 && l25==0){
+  38   2          lcd_cmd(0x8d);
+  39   2          lcd_print("100%");
+  40   2        }
+  41   1        else if(l100==1 && l75==0 && l50==0 && l25==0){
+  42   2          lcd_cmd(0x8d);
+  43   2          lcd_print("75%");
+  44   2        }
+  45   1        else if(l100==1 && l75==1 && l50==0 && l25==0){
+  46   2          lcd_cmd(0x8d);
+  47   2          lcd_print("50%");
+  48   2        }
+  49   1        else if(l100==1 && l75==1 && l50==1 && l25==0){
+  50   2          lcd_cmd(0x8d);
+  51   2          lcd_print("25%");
+  52   2        }
+  53   1        else if(l100==1 && l75==1 && l50==1 && l25==1){
+  54   2          lcd_cmd(0x8d);
+C51 COMPILER V9.60.0.0   TEST_CODE                                                         09/04/2022 18:11:04 PAGE 2   
+
+  55   2          lcd_print("0%");
+  56   2        }
+  57   1        else{
+  58   2          lcd_cmd(0x8e);
+  59   2          lcd_print("-");
+  60   2        }
+  61   1      }
+  62          void checkPUMP( void ){
+  63   1        // write code to check pump value
+  64   1        lcd_cmd(0xc5);
+  65   1        if(pump==0)
+  66   1          lcd_print("OFF");
+  67   1        else
+  68   1          lcd_print("ON");
+  69   1      }
+  70          void checkMODE(void){
+  71   1        // write code to check mode value
+  72   1        lcd_cmd(0xca);
+  73   1        if(mode==0){
+  74   2          lcd_print("MANUAL");
+  75   2        }
+  76   1        else{
+  77   2          lcd_print("AUTO");
+  78   2        }
+  79   1        
+  80   1      }
+  81          void delay ( unsigned int value ){
+  82   1        unsigned int i ;
+  83   1        for(i=0;i<value;i++);
+  84   1      }
+  85          void lcd_init ( void ) {
+  86   1        lcd_cmd(0x38);
+  87   1        lcd_cmd(0x0c);
+  88   1        lcd_cmd(0x01);
+  89   1        lcd_cmd(0x80);
+  90   1      }
+  91          void lcd_cmd ( unsigned char a ){
+  92   1        rs = 0 ;
+  93   1        ldata = a ;
+  94   1        en = 1 ;
+  95   1        delay(200);
+  96   1        en = 0;
+  97   1      }
+  98          void lcd_data ( unsigned char b ){
+  99   1        rs = 1 ;
+ 100   1        ldata = b ;
+ 101   1        en = 1 ;
+ 102   1        delay(100);
+ 103   1        en = 0;
+ 104   1      }
+ 105          void lcd_print ( unsigned char *str){
+ 106   1        while(*str)
+ 107   1          lcd_data(*str++);
+ 108   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    348    ----
+   CONSTANT SIZE    =     68    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      6       3
+C51 COMPILER V9.60.0.0   TEST_CODE                                                         09/04/2022 18:11:04 PAGE 3   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,91 @@
+C51 COMPILER V9.60.0.0   2110040027_AUTOMATEDLIGHTINGSYSTEM                                10/01/2022 13:33:06 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE 2110040027_AUTOMATEDLIGHTINGSYSTEM
+OBJECT MODULE PLACED IN .\Objects\2110040027-AutomatedLightingSystem.obj
+COMPILER INVOKED BY: G:\keil\C51\BIN\C51.EXE 2110040027-AutomatedLightingSystem.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTE
+                    -XTEND PRINT(.\Listings\2110040027-AutomatedLightingSystem.lst) TABS(2) OBJECT(.\Objects\2110040027-AutomatedLightingSyst
+                    -em.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          void lcd_init ( void );
+   3          void lcd_cmd ( unsigned char a );
+   4          void lcd_data ( unsigned char b );
+   5          void lcd_print ( unsigned char *str );
+   6          void delay ( unsigned int value);
+   7          
+   8          sbit ir= P2^2;
+   9          sbit rs = P2^0 ;
+  10          sbit en = P2^1 ;
+  11          sbit buzEN=P2^3;
+  12          sfr ldata = 0xb0;
+  13          
+  14          unsigned int value;
+  15          
+  16          void main ( void ) {
+  17   1        lcd_init();
+  18   1        buzEN=0;
+  19   1        
+  20   1        while(1){
+  21   2          if(ir==1){
+  22   3            lcd_init();
+  23   3            lcd_print(" you are IN ");
+  24   3            buzEN=1;
+  25   3            delay(10000);
+  26   3          }
+  27   2          if(ir==0){
+  28   3            lcd_init();
+  29   3            lcd_print(" you are OUT ");
+  30   3            buzEN=0;
+  31   3            delay(10000);
+  32   3          }
+  33   2          
+  34   2        }
+  35   1        
+  36   1      }
+  37          void delay ( unsigned int value ){
+  38   1        unsigned int i ;
+  39   1        for(i=0;i<value;i++);
+  40   1      }
+  41          void lcd_init ( void ) {
+  42   1        lcd_cmd(0x38);
+  43   1        lcd_cmd(0x0c);
+  44   1        lcd_cmd(0x01);
+  45   1        lcd_cmd(0x80);
+  46   1      }
+  47          void lcd_cmd ( unsigned char a ){
+  48   1        rs = 0 ;
+  49   1        ldata = a ;
+  50   1        en = 1 ;
+  51   1        delay(200);
+  52   1        en = 0;
+  53   1      }
+C51 COMPILER V9.60.0.0   2110040027_AUTOMATEDLIGHTINGSYSTEM                                10/01/2022 13:33:06 PAGE 2   
+
+  54          void lcd_data ( unsigned char b ){
+  55   1        rs = 1 ;
+  56   1        ldata = b ;
+  57   1        en = 1 ;
+  58   1        delay(100);
+  59   1        en = 0;
+  60   1      }
+  61          void lcd_print ( unsigned char *str){
+  62   1        while(*str)
+  63   1          lcd_data(*str++);
+  64   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    162    ----
+   CONSTANT SIZE    =     27    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      2       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

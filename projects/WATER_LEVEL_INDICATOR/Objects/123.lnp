@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\Port_Pin_Toggle.obj" 
+TO ".\Objects\123" 
+PRINT(".\Listings\123.m51")

@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\MoistureSensorCode.obj" 
+TO ".\Objects\moisture_sensor" 
+PRINT(".\Listings\moisture_sensor.m51")
